@@ -1,0 +1,85 @@
+body {
+    background: linear-gradient(20deg, #973101, #E0A75E, #F9D689, #F5E7B2,#973121);
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: "poppins", Arial, Helvetica, sans-serif;
+}
+.imgupload{
+    margin: auto;
+    margin-top: 0%;
+    margin-bottom: 10px;
+    width: 400px;
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 65px;
+    color: #F5E7B2;
+    font-size: 20px;
+    box-shadow: 3px 3px #973101;
+}
+.imgupload button{
+    background-color: #E0A75E;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-left: 20px;
+    font-size: medium;
+    box-shadow: 3px 3px #973101;
+}
+.imgupload button:hover{
+    background-color: white;
+    border: 1px solid black;
+}
+
+.imgupload form{
+    padding: auto;
+    margin:auto;
+    width: 80%;
+    
+}
+.in{
+    background-color: #F5E7B2;
+    color: #973101;
+    border: 0.5px solid black;
+    border-radius:200px;
+    width: 50%;
+}
+.uploadedImg{
+    width: fit-content;
+    height: 300px;
+    border-radius: 10%;
+    margin: auto;
+    display: block;
+}
+.py-5{
+   margin: auto;
+}
+.result{
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 400px;
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: #ed3a04;
+    font-size: 15px;
+    box-shadow: 3px 3px #973101;
+}
+.container{
+    margin: auto;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    background-color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid black;
+    border-radius: 20px;
+    font-size: 20px;
+    box-shadow: 3px 3px #973101;
+    box-sizing:flex;
+}
