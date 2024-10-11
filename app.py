@@ -25,28 +25,34 @@ def index():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    if 'file' not in request.files:
-        return jsonify({'error': 'No file provided'})
+    try:
+        if 'file' not in request.files:
+            return jsonify({'error': 'No file provided'})
 
-    file = request.files['file']
-    if file.filename == '':
-        return jsonify({'error': 'No selected file'})
+        file = request.files['file']
+        if file.filename == '':
+            return jsonify({'error': 'No selected file'})
 
-    # Save the uploaded file temporarily
-    temp_path = 'static/temp_image.jpg'  # Save the file in the 'static' folder
-    file.save(temp_path)
+        # Save the uploaded file temporarily
+        temp_path = 'static/temp_image.jpg'  # Save the file in the 'static' folder
+        file.save(temp_path)
 
-    # Load and preprocess the new image
-    new_image = load_and_preprocess_new_image(temp_path)
+        # Load and preprocess the new image
+        new_image = load_and_preprocess_new_image(temp_path)
 
-    # Make predictions using the trained model
-    prediction_result = model.predict(np.expand_dims(new_image, axis=0))
+        # Make predictions using the trained model
+        prediction_result = model.predict(np.expand_dims(new_image, axis=0))
 
-    # Interpret the prediction result
-    prediction_label = "Dirt Buildup" if prediction_result[0][0] > 0.5 else "Clean"
+        # Interpret the prediction result
+        prediction_label = "Dirt Buildup" if prediction_result[0][0] > 0.5 else "Clean"
 
-    # Pass the image URL, prediction label, and probability to the template
-    return render_template('index.html', uploaded_image=url_for('static', filename='temp_image.jpg'), prediction_label=prediction_label, prediction_prob=float(prediction_result[0][0]))
+        # Pass the image URL, prediction label, and probability to the template
+        return render_template('index.html', uploaded_image=url_for('static', filename='temp_image.jpg'), prediction_label=prediction_label, prediction_prob=float(prediction_result[0][0]))
+    
+    except Exception as e:
+        # Log the error message for debugging
+        print(f"Error during prediction: {e}")
+        return jsonify({'error': 'Internal Server Error', 'message': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=False,host='0.0.0.0')
